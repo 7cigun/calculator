@@ -9,7 +9,8 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/woodcalc" />
 
     <TextView
         android:id="@+id/calculator_screen"
@@ -19,8 +20,10 @@
         android:layout_marginTop="@dimen/screen_margin"
         android:layout_marginEnd="@dimen/screen_margin"
         android:layout_marginBottom="@dimen/screen_margin"
+        android:background="@color/screen_color"
         android:gravity="end"
         android:text="user entered text"
+        android:textColor="@color/black"
         android:textSize="@dimen/screen_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#0000FF</color>
     <color name="red">#FF0000</color>
+    <color name="screen_color">#B2C8C8FA</color>
 </resources>
