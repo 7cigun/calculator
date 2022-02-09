@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonPoint;
     private Button buttonCount;
 
-
     private TextView calculatorTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.BlueCalculator);
         setContentView(R.layout.activity_calculator);
         initView();
         setListeners();
