@@ -37,7 +37,7 @@
         <item name="colorOnTertiaryContainer">@color/blue</item>
         <item name="android:statusBarColor">@color/blue</item>
         <item name="android:textSize">@dimen/text_size</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/white</item>
         <item name="materialButtonStyle">@style/myButtonStyle</item>
     </style>
 </resources>
