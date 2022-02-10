@@ -1,5 +1,8 @@
 package ru.gb.calculator;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+   private Calculator calcData = new Calculator();
 
     private Button buttonOne;
     private Button buttonTwo;
@@ -27,10 +32,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonCount;
 
 
-    private TextView calculatorTextView;
+    private TextView tvCalculator;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
         initView();
@@ -38,9 +43,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onSaveInstanceState(@NonNull Bundle instanceState) {
+        super.onSaveInstanceState(instanceState);
+        instanceState.putSerializable("CalculatorData", calcData  );
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
+        super.onRestoreInstanceState(instanceState);
+        calcData = (Calculator) instanceState.getSerializable("CalculatorData");
+        tvCalculator.setText(String.format("%d", calcData.getUserData()));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onClick(View view) {
         Button button = (Button) view;
-        calculatorTextView.setText(String.format("%s%s", calculatorTextView.getText().toString(), button.getText().toString()));
+        String saveScreen = String.format("%s%s", tvCalculator.getText().toString(), button.getText().toString());
+        /*calcData.setUserData(saveScreen);
+        tvCalculator.setText(saveScreen);*/
     }
 
     private void setListeners() {
@@ -80,6 +110,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDivision = findViewById(R.id.button_division);
         buttonCount = findViewById(R.id.button_count);
 
-        calculatorTextView = findViewById(R.id.calculator_screen);
+        tvCalculator = findViewById(R.id.calculator_screen);
     }
 }
