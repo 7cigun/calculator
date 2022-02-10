@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
         super.onRestoreInstanceState(instanceState);
         calcData = (Calculator) instanceState.getSerializable("CalculatorData");
-        tvCalculator.setText(String.format("%d", calcData.getUserData()));
+        tvCalculator.setText(String.format("%s", calcData.getUserData()));
     }
 
     @Override
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Button button = (Button) view;
         String saveScreen = String.format("%s%s", tvCalculator.getText().toString(), button.getText().toString());
-        /*calcData.setUserData(saveScreen);
-        tvCalculator.setText(saveScreen);*/
+        calcData.setUserData(saveScreen);
+        tvCalculator.setText(saveScreen);
     }
 
     private void setListeners() {
