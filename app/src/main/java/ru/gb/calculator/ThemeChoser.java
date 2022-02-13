@@ -44,8 +44,12 @@ public class ThemeChoser extends AppCompatActivity implements View.OnClickListen
                 break;
             }
             case R.id.buttonOk: {
+                Intent intentResult = new Intent();
+                /*intentResult.putExtra(MainActivity.KEY_INTENT_FROM_SECOND_TO_MAIN, getAppTheme());
+                ThemeChoser.this.setResult(RESULT_OK,intentResult);*/
                 Intent intent = new Intent(ThemeChoser.this, MainActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             }
         }
@@ -61,6 +65,6 @@ public class ThemeChoser extends AppCompatActivity implements View.OnClickListen
 
     protected int getAppTheme() {
         SharedPreferences sharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
-        return sharedPref.getInt(PREF_THEME_KEY, R.style.BlueCalculator);
+        return sharedPref.getInt(PREF_THEME_KEY, MODE_PRIVATE);
     }
 }

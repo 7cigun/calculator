@@ -4,12 +4,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final int REQUEST_CODE = 01;
+    public static String KEY_INTENT_FROM_MAIN_TO_SECOND = "key1";
+    public static String KEY_INTENT_FROM_SECOND_TO_MAIN = "key2";
+
+    private static final String PREF_NAME = "key_pref";
+    private static final String PREF_THEME_KEY = "key_pref_theme";
 
     private Button buttonOne;
     private Button buttonTwo;
@@ -30,12 +38,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonTheme;
 
     private TextView calculatorTextView;
+    private String calculatorTheme;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.BlueCalculator);
+        /*setTheme(R.style.BlueCalculator);*/
+        setTheme(getAppTheme());
         setContentView(R.layout.activity_calculator);
         initView();
         setListeners();
@@ -68,11 +78,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ThemeChoser.class);
+                Intent intent = new Intent(MainActivity.this, ThemeChoser.class);
+                /*startActivityForResult(intent, REQUEST_CODE);*/
                 startActivity(intent);
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            if (data.getExtras() != null) {
+                /*calculatorTheme = (data.getStringExtra(KEY_INTENT_FROM_SECOND_TO_MAIN));*/
+                setTheme(getAppTheme());
+            }
+        }
     }
 
     private void initView() {
@@ -96,6 +118,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         calculatorTextView = findViewById(R.id.calculator_screen);
+    }
+
+    protected void setAppTheme(int codeStyle) {
+        SharedPreferences sharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(PREF_THEME_KEY, codeStyle);
+        editor.apply();
+    }
+
+    protected int getAppTheme() {
+        SharedPreferences sharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        return sharedPref.getInt(PREF_THEME_KEY, MODE_PRIVATE);
     }
 
 }
