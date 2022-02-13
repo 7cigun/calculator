@@ -40,4 +40,46 @@
         <item name="android:textColor">@color/white</item>
         <item name="materialButtonStyle">@style/myButtonStyle</item>
     </style>
+
+    <style name="RedCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:navigationBarColor">@color/red</item>
+        <item name="colorPrimary">@color/red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/red</item>
+        <item name="colorOnPrimaryContainer">@color/red</item>
+        <item name="colorPrimaryInverse">@color/red</item>
+        <item name="colorSecondary">@color/red</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/red</item>
+        <item name="colorOnSecondaryContainer">@color/red</item>
+        <item name="colorTertiary">@color/red</item>
+        <item name="colorOnTertiary">@color/red</item>
+        <item name="colorTertiaryContainer">@color/red</item>
+        <item name="colorOnTertiaryContainer">@color/red</item>
+        <item name="android:statusBarColor">@color/red</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="materialButtonStyle">@style/myButtonStyle</item>
+    </style>
+
+    <style name="GreenCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:navigationBarColor">@color/green</item>
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/green</item>
+        <item name="colorOnPrimaryContainer">@color/green</item>
+        <item name="colorPrimaryInverse">@color/green</item>
+        <item name="colorSecondary">@color/green</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/green</item>
+        <item name="colorOnSecondaryContainer">@color/green</item>
+        <item name="colorTertiary">@color/green</item>
+        <item name="colorOnTertiary">@color/green</item>
+        <item name="colorTertiaryContainer">@color/green</item>
+        <item name="colorOnTertiaryContainer">@color/green</item>
+        <item name="android:statusBarColor">@color/green</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="materialButtonStyle">@style/myButtonStyle</item>
+    </style>
 </resources>

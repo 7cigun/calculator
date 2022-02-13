@@ -1,7 +1,9 @@
 package ru.gb.calculator;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,8 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonMultiplication;
     private Button buttonPoint;
     private Button buttonCount;
+    private Button buttonTheme;
 
     private TextView calculatorTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDivision.setOnClickListener(this);
         buttonMultiplication.setOnClickListener(this);
         buttonCount.setOnClickListener(this);
+
+        buttonTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,ThemeChoser.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void initView() {
@@ -79,7 +92,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonMultiplication = findViewById(R.id.button_multiplication);
         buttonDivision = findViewById(R.id.button_division);
         buttonCount = findViewById(R.id.button_count);
+        buttonTheme = findViewById(R.id.button_theme);
+
 
         calculatorTextView = findViewById(R.id.calculator_screen);
     }
+
 }
